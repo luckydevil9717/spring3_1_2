@@ -28,14 +28,13 @@ public class UserCleanupService {
         for (User user : allUsers) {
             String email = user.getEmail();
             if (email == null || email.isBlank()) {
-                continue; // пропускаем пользователей без email
+                continue;
             }
 
-            email = email.toLowerCase().trim(); // нормализуем
+            email = email.toLowerCase().trim();
             if (!uniqueEmails.containsKey(email)) {
                 uniqueEmails.put(email, user);
             } else {
-                // удаляем дубликат
                 userRepository.delete(user);
             }
         }

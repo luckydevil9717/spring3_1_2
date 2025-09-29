@@ -22,11 +22,10 @@ public class DataInitializer implements CommandLineRunner {
 
     @Override
     public void run(String... args) {
-        // роли
+
         Role roleUser = new Role("ROLE_USER");
         Role roleAdmin = new Role("ROLE_ADMIN");
 
-        // пользователи
         User user = new User("User", "User", 25, "user@mail.ru",
                 passwordEncoder.encode("user"));
         user.setRoles(Set.of(roleUser));
@@ -35,7 +34,6 @@ public class DataInitializer implements CommandLineRunner {
                 passwordEncoder.encode("admin"));
         admin.setRoles(Set.of(roleAdmin));
 
-        // сохранение
         userService.saveUser(user);
         userService.saveUser(admin);
     }

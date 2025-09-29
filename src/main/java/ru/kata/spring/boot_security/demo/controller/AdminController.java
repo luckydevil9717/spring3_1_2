@@ -22,7 +22,7 @@ public class AdminController {
         this.roleService = roleService;
     }
 
-    // Страница со списком пользователей
+
     @GetMapping("/users")
     public String listUsers(Model model, @AuthenticationPrincipal User user) {
         model.addAttribute("users", userService.getAllUsers());
@@ -31,7 +31,7 @@ public class AdminController {
         return "admin/users";
     }
 
-    // Форма добавления нового пользователя
+
     @GetMapping("/users/new")
     public String newUserForm(Model model, @AuthenticationPrincipal User currentUser) {
         model.addAttribute("user", new User());
@@ -63,7 +63,7 @@ public class AdminController {
         return "redirect:/admin/users";
     }
 
-    // Форма редактирования пользователя
+
     @GetMapping("/users/edit/{id}")
     public String editUserForm(@PathVariable Long id, Model model,
                                @AuthenticationPrincipal User currentUser) {
@@ -75,8 +75,6 @@ public class AdminController {
     }
 
 
-
-    // Удаление пользователя
     @GetMapping("/users/delete/{id}")
     public String deleteUser(@PathVariable Long id) {
         userService.deleteUser(id);
