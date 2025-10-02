@@ -26,12 +26,10 @@ public class DataInitializer implements CommandLineRunner {
         Role roleUser = new Role("ROLE_USER");
         Role roleAdmin = new Role("ROLE_ADMIN");
 
-        User user = new User("User", "User", 25, "user@mail.ru",
-                passwordEncoder.encode("user"));
+        User user = new User("User", "User", 25, "user@mail.ru","user");
         user.setRoles(Set.of(roleUser));
 
-        User admin = new User("Admin", "Admin", 30, "admin@mail.ru",
-                passwordEncoder.encode("admin"));
+        User admin = new User("Admin", "Admin", 30, "admin@mail.ru","admin");
         admin.setRoles(Set.of(roleAdmin));
 
         userService.saveUser(user);
